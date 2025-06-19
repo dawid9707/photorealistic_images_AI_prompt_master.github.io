@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Prompts for Photorealistic Images</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <style>
+        /* Custom styles for Material 3 look and feel based on primary #381E72 */
+        :root {
+            --md-sys-color-primary: #D0BCFF;
+            --md-sys-color-on-primary: #381E72;
+            --md-sys-color-primary-container: #4F378B;
+            --md-sys-color-on-primary-container: #EADDFF;
+            --md-sys-color-background: #1C1B1F;
+            --md-sys-color-on-background: #E6E1E5;
+            --md-sys-color-surface: #1C1B1F;
+            --md-sys-color-on-surface: #E6E1E5;
+            --md-sys-color-surface-variant: #49454F;
+            --md-sys-color-on-surface-variant: #CAC4D0;
+            --md-sys-color-outline: #938F99;
+            --md-sys-color-surface-container-low: #1D1B20;
+            --md-sys-color-surface-container: #211F26;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+        }
+        .material-card {
+            background-color: var(--md-sys-color-surface-container-low);
+            border: 1px solid var(--md-sys-color-surface-variant);
+            transition: box-shadow 0.3s ease, background-color 0.3s ease;
+        }
+        .material-card:hover {
+            background-color: var(--md-sys-color-surface-container);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+        .prompt-block {
+            background-color: var(--md-sys-color-surface-container);
+            border: 1px solid var(--md-sys-color-outline);
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .copy-btn {
+            background-color: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface-variant);
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+        .copy-btn:hover {
+            background-color: var(--md-sys-color-primary-container);
+            color: var(--md-sys-color-on-primary-container);
+        }
+        .copy-btn.copied {
+            background-color: var(--md-sys-color-on-primary);
+            color: var(--md-sys-color-primary);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .header-gradient {
+            background: linear-gradient(90deg, var(--md-sys-color-primary), #74E2D3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-accent-primary { color: var(--md-sys-color-primary); }
+        .text-accent-style { color: #D0BCFF; } /* Style */
+        .text-accent-object { color: #99DBCB; } /* Object/Scene */
+        .text-accent-details { color: #F8B8D2; } /* Details */
+        .text-accent-lighting { color: #FFD8A8; } /* Lighting */
+        .text-accent-technical { color: #DCE66B; } /* Technical */
+        
+        /* Language Switcher */
+        .lang-switcher button {
+            background-color: var(--md-sys-color-surface-variant);
+            color: var(--md-sys-color-on-surface-variant);
+            padding: 8px 16px;
+            border-radius: 99px;
+            border: 1px solid transparent;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        .lang-switcher button:hover {
+            background-color: var(--md-sys-color-primary-container);
+        }
+        .lang-switcher button.active {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            border-color: var(--md-sys-color-primary);
+        }
+
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Main Container -->
+    <div class="container mx-auto p-4 md:p-8 max-w-5xl relative">
+
+        <!-- Language Switcher -->
+        <div class="lang-switcher absolute top-4 right-4 flex space-x-2">
+            <button id="lang-en" onclick="setLanguage('en')">EN</button>
+            <button id="lang-pl" onclick="setLanguage('pl')">PL</button>
+        </div>
+
+        <!-- Header -->
+        <header class="text-center mb-10 md:mb-16 pt-12">
+            <span class="material-symbols-outlined text-6xl text-accent-primary">auto_awesome</span>
+            <h1 class="text-4xl md:text-5xl font-bold mt-2" data-lang-key="title">
+                Prompt Master <span class="header-gradient">AI</span>
+            </h1>
+            <p class="text-lg text-gray-400 mt-4" data-lang-key="subtitle">Your guide to creating photorealistic images</p>
+        </header>
+
+        <!-- Prompts Section -->
+        <div class="space-y-8">
+
+            <!-- Card 1: Ideal Prompt Structure -->
+            <div class="material-card rounded-2xl p-6">
+                <h2 class="flex items-center text-2xl font-semibold mb-4 text-white" data-lang-key="card1_title">
+                    <span class="material-symbols-outlined mr-3 text-accent-primary">construction</span>
+                    Ideal Prompt Structure
+                </h2>
+                <p class="text-gray-300 mb-4" data-lang-key="card1_desc">
+                    A good prompt is like a recipe. The more precise the ingredients and instructions, the better the result. Here is a proven structure:
+                </p>
+                <div class="prompt-block rounded-lg p-4 text-gray-300 text-sm">
+                    <p>
+                        <strong class="text-accent-style" data-lang-key="prompt_style">[Image Style]</strong>, 
+                        <strong class="text-accent-object" data-lang-key="prompt_object">[Subject/Scene Description]</strong>, 
+                        <strong class="text-accent-details" data-lang-key="prompt_details">[Details and Context]</strong>, 
+                        <strong class="text-accent-lighting" data-lang-key="prompt_lighting">[Lighting]</strong>, 
+                        <strong class="text-accent-technical" data-lang-key="prompt_technical">[Technical Parameters]</strong>
+                    </p>
+                </div>
+                 <p class="text-gray-400 mt-4 text-xs" data-lang-key="card1_note">
+                    Not all elements are always necessary, but their combination gives the greatest control over the result.
+                </p>
+            </div>
+            
+            <!-- Card 2: Keywords & Phrases -->
+            <div class="material-card rounded-2xl p-6">
+                <h2 class="flex items-center text-2xl font-semibold mb-4 text-white" data-lang-key="card2_title">
+                    <span class="material-symbols-outlined mr-3 text-accent-primary">key</span>
+                    Keywords & Phrases
+                </h2>
+                <p class="text-gray-300 mb-4" data-lang-key="card2_desc">
+                    These keywords significantly increase the level of photorealism and detail.
+                </p>
+                <ul class="list-disc list-inside space-y-2 text-gray-300">
+                    <li data-lang-key="card2_quality"><strong>Quality:</strong> <code class="bg-gray-700 px-2 py-1 rounded">photorealistic</code>, <code class="bg-gray-700 px-2 py-1 rounded">hyperrealistic</code>, <code class="bg-gray-700 px-2 py-1 rounded">ultra-detailed</code>, <code class="bg-gray-700 px-2 py-1 rounded">8K</code>, <code class="bg-gray-700 px-2 py-1 rounded">sharp focus</code></li>
+                    <li data-lang-key="card2_style"><strong>Style:</strong> <code class="bg-gray-700 px-2 py-1 rounded">cinematic</code>, <code class="bg-gray-700 px-2 py-1 rounded">film still</code>, <code class="bg-gray-700 px-2 py-1 rounded">DSLR photo</code>, <code class="bg-gray-700 px-2 py-1 rounded">professional photography</code></li>
+                    <li data-lang-key="card2_engine"><strong>Rendering Engine:</strong> <code class="bg-gray-700 px-2 py-1 rounded">Unreal Engine</code>, <code class="bg-gray-700 px-2 py-1 rounded">V-Ray</code>, <code class="bg-gray-700 px-2 py-1 rounded">Octane Render</code></li>
+                </ul>
+            </div>
+
+            <!-- Card 3: Example Prompts -->
+            <div class="material-card rounded-2xl p-6">
+                <h2 class="flex items-center text-2xl font-semibold mb-4 text-white" data-lang-key="card3_title">
+                    <span class="material-symbols-outlined mr-3 text-accent-primary">photo_camera</span>
+                    Example Prompts (Ready to use)
+                </h2>
+                
+                <div class="mb-6">
+                    <h3 class="font-semibold text-lg mb-2 text-gray-200" data-lang-key="card3_ex1_title">Outdoor Portrait</h3>
+                    <div class="relative prompt-block rounded-lg p-4 pr-16 text-gray-200 text-sm">
+                        <p>DSLR photo of a beautiful young woman with freckles, long curly red hair, smiling gently, autumn forest background, soft natural light, shallow depth of field, Canon EOS 5D Mark IV, 50mm f/1.8 lens, photorealistic, hyper-detailed, sharp focus.</p>
+                        <button class="copy-btn absolute top-3 right-3 p-2 rounded-md" onclick="copyPrompt(this)">
+                            <span class="material-symbols-outlined text-lg">content_copy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h3 class="font-semibold text-lg mb-2 text-gray-200" data-lang-key="card3_ex2_title">Modern Architecture</h3>
+                     <div class="relative prompt-block rounded-lg p-4 pr-16 text-gray-200 text-sm">
+                        <p>Architectural photography of a modern minimalist house made of concrete and glass, nestled in a lush green forest, dramatic cinematic lighting during golden hour, wide-angle shot, reflections on the glass, rendered in V-Ray, 8K, hyperrealistic.</p>
+                        <button class="copy-btn absolute top-3 right-3 p-2 rounded-md" onclick="copyPrompt(this)">
+                            <span class="material-symbols-outlined text-lg">content_copy</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-semibold text-lg mb-2 text-gray-200" data-lang-key="card3_ex3_title">Product Shot</h3>
+                    <div class="relative prompt-block rounded-lg p-4 pr-16 text-gray-200 text-sm">
+                        <p>Commercial product shot of a luxury watch with a leather strap, resting on a dark marble surface, studio lighting with soft shadows, macro photography, extremely detailed, sharp focus on the watch face, reflection on the polished metal, professional product photography.</p>
+                        <button class="copy-btn absolute top-3 right-3 p-2 rounded-md" onclick="copyPrompt(this)">
+                            <span class="material-symbols-outlined text-lg">content_copy</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Lighting & Camera -->
+            <div class="material-card rounded-2xl p-6">
+                 <h2 class="flex items-center text-2xl font-semibold mb-4 text-white" data-lang-key="card4_title">
+                    <span class="material-symbols-outlined mr-3 text-accent-primary">lightbulb</span>
+                    The Magic of Lighting & Camera Settings
+                </h2>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2 text-gray-200" data-lang-key="card4_lighting_title">Lighting Types:</h3>
+                        <ul class="list-disc list-inside space-y-1 text-gray-300">
+                            <li><code class="bg-gray-700 px-1 rounded">cinematic lighting</code> - filmic, dramatic</li>
+                            <li><code class="bg-gray-700 px-1 rounded">golden hour</code> - warm, soft light</li>
+                            <li><code class="bg-gray-700 px-1 rounded">blue hour</code> - cool light after sunset</li>
+                            <li><code class="bg-gray-700 px-1 rounded">studio lighting</code> - controlled, professional</li>
+                            <li><code class="bg-gray-700 px-1 rounded">neon lighting</code> - colorful, urban</li>
+                             <li><code class="bg-gray-700 px-1 rounded">Rembrandt lighting</code> - classic, portraiture</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2 text-gray-200" data-lang-key="card4_camera_title">Camera Settings:</h3>
+                        <ul class="list-disc list-inside space-y-1 text-gray-300">
+                            <li><code class="bg-gray-700 px-1 rounded">wide-angle lens</code></li>
+                            <li><code class="bg-gray-700 px-1 rounded">telephoto lens</code></li>
+                            <li><code class="bg-gray-700 px-1 rounded">macro lens</code></li>
+                            <li><code class="bg-gray-700 px-1 rounded">shallow depth of field</code> - blurry background (bokeh)</li>
+                            <li><code class="bg-gray-700 px-1 rounded">long exposure</code></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Popular AI Engines -->
+            <div class="material-card rounded-2xl p-6">
+                 <h2 class="flex items-center text-2xl font-semibold mb-4 text-white" data-lang-key="card5_title">
+                    <span class="material-symbols-outlined mr-3 text-accent-primary">hub</span>
+                    Popular AI Image Generation Engines
+                </h2>
+                <p class="text-gray-300 mb-6" data-lang-key="card5_desc">
+                    Each engine has its strengths. It's worth experimenting to find the one that best suits your style.
+                </p>
+                <div class="space-y-4">
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-200">Midjourney</h3>
+                        <p class="text-gray-400" data-lang-key="card5_mj_desc">Known for generating very artistic, polished, and often "opinionated" images. Excellent for creating unique, aesthetic compositions.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-200">Stable Diffusion</h3>
+                        <p class="text-gray-400" data-lang-key="card5_sd_desc">An open-source model that offers enormous flexibility and control. It requires more technical knowledge but allows for training custom models and advanced modifications.</p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg text-gray-200">DALL-E 3 (OpenAI)</h3>
+                        <p class="text-gray-400" data-lang-key="card5_dalle_desc">Integrated with ChatGPT, it excels at understanding complex and descriptive prompts in natural language. Ideal for quickly prototyping ideas.</p>
+                    </div>
+                     <div>
+                        <h3 class="font-semibold text-lg text-gray-200">Adobe Firefly</h3>
+                        <p class="text-gray-400" data-lang-key="card5_ff_desc">Trained on the Adobe Stock library, making it safe for commercial use. It integrates seamlessly with the Adobe ecosystem (e.g., Photoshop).</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Footer -->
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p data-lang-key="footer_text">Created with a passion for generative AI. Experiment and create!</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const translations = {
+            en: {
+                title: 'Prompt Master <span class="header-gradient">AI</span>',
+                subtitle: 'Your guide to creating photorealistic images',
+                card1_title: 'Ideal Prompt Structure',
+                card1_desc: 'A good prompt is like a recipe. The more precise the ingredients and instructions, the better the result. Here is a proven structure:',
+                prompt_style: '[Image Style]',
+                prompt_object: '[Subject/Scene Description]',
+                prompt_details: '[Details and Context]',
+                prompt_lighting: '[Lighting]',
+                prompt_technical: '[Technical Parameters]',
+                card1_note: 'Not all elements are always necessary, but their combination gives the greatest control over the result.',
+                card2_title: 'Keywords & Phrases',
+                card2_desc: 'These keywords significantly increase the level of photorealism and detail.',
+                card2_quality: '<strong>Quality:</strong> <code class="bg-gray-700 px-2 py-1 rounded">photorealistic</code>, <code class="bg-gray-700 px-2 py-1 rounded">hyperrealistic</code>, <code class="bg-gray-700 px-2 py-1 rounded">ultra-detailed</code>, <code class="bg-gray-700 px-2 py-1 rounded">8K</code>, <code class="bg-gray-700 px-2 py-1 rounded">sharp focus</code>',
+                card2_style: '<strong>Style:</strong> <code class="bg-gray-700 px-2 py-1 rounded">cinematic</code>, <code class="bg-gray-700 px-2 py-1 rounded">film still</code>, <code class="bg-gray-700 px-2 py-1 rounded">DSLR photo</code>, <code class="bg-gray-700 px-2 py-1 rounded">professional photography</code>',
+                card2_engine: '<strong>Rendering Engine:</strong> <code class="bg-gray-700 px-2 py-1 rounded">Unreal Engine</code>, <code class="bg-gray-700 px-2 py-1 rounded">V-Ray</code>, <code class="bg-gray-700 px-2 py-1 rounded">Octane Render</code>',
+                card3_title: 'Example Prompts (Ready to use)',
+                card3_ex1_title: 'Outdoor Portrait',
+                card3_ex2_title: 'Modern Architecture',
+                card3_ex3_title: 'Product Shot',
+                card4_title: 'The Magic of Lighting & Camera Settings',
+                card4_lighting_title: 'Lighting Types:',
+                card4_camera_title: 'Camera Settings:',
+                card5_title: 'Popular AI Image Generation Engines',
+                card5_desc: "Each engine has its strengths. It's worth experimenting to find the one that best suits your style.",
+                card5_mj_desc: 'Known for generating very artistic, polished, and often "opinionated" images. Excellent for creating unique, aesthetic compositions.',
+                card5_sd_desc: 'An open-source model that offers enormous flexibility and control. It requires more technical knowledge but allows for training custom models and advanced modifications.',
+                card5_dalle_desc: 'Integrated with ChatGPT, it excels at understanding complex and descriptive prompts in natural language. Ideal for quickly prototyping ideas.',
+                card5_ff_desc: 'Trained on the Adobe Stock library, making it safe for commercial use. It integrates seamlessly with the Adobe ecosystem (e.g., Photoshop).',
+                footer_text: 'Created with a passion for generative AI. Experiment and create!'
+            },
+            pl: {
+                title: 'Mistrz Promptów <span class="header-gradient">AI</span>',
+                subtitle: 'Twój przewodnik po tworzeniu fotorealistycznych obrazów',
+                card1_title: 'Struktura Idealnego Promptu',
+                card1_desc: 'Dobry prompt jest jak przepis. Im dokładniejsze składniki i instrukcje, tym lepszy rezultat. Oto sprawdzona struktura:',
+                prompt_style: '[Styl obrazu]',
+                prompt_object: '[Opis obiektu/sceny]',
+                prompt_details: '[Detale i kontekst]',
+                prompt_lighting: '[Oświetlenie]',
+                prompt_technical: '[Parametry techniczne]',
+                card1_note: 'Nie wszystkie elementy są zawsze konieczne, ale ich kombinacja daje największą kontrolę nad wynikiem.',
+                card2_title: 'Kluczowe Słowa i Frazy',
+                card2_desc: 'Te słowa kluczowe znacząco podnoszą poziom fotorealizmu i szczegółowości.',
+                card2_quality: '<strong>Jakość:</strong> <code class="bg-gray-700 px-2 py-1 rounded">photorealistic</code>, <code class="bg-gray-700 px-2 py-1 rounded">hyperrealistic</code>, <code class="bg-gray-700 px-2 py-1 rounded">ultra-detailed</code>, <code class="bg-gray-700 px-2 py-1 rounded">8K</code>, <code class="bg-gray-700 px-2 py-1 rounded">sharp focus</code>',
+                card2_style: '<strong>Styl:</strong> <code class="bg-gray-700 px-2 py-1 rounded">cinematic</code>, <code class="bg-gray-700 px-2 py-1 rounded">film still</code>, <code class="bg-gray-700 px-2 py-1 rounded">DSLR photo</code>, <code class="bg-gray-700 px-2 py-1 rounded">professional photography</code>',
+                card2_engine: '<strong>Silnik renderujący:</strong> <code class="bg-gray-700 px-2 py-1 rounded">Unreal Engine</code>, <code class="bg-gray-700 px-2 py-1 rounded">V-Ray</code>, <code class="bg-gray-700 px-2 py-1 rounded">Octane Render</code>',
+                card3_title: 'Przykładowe Prompty (Gotowe do użycia)',
+                card3_ex1_title: 'Portret w plenerze',
+                card3_ex2_title: 'Nowoczesna architektura',
+                card3_ex3_title: 'Zdjęcie produktowe',
+                card4_title: 'Magia Oświetlenia i Ustawień Kamery',
+                card4_lighting_title: 'Rodzaje oświetlenia:',
+                card4_camera_title: 'Ustawienia aparatu:',
+                card5_title: 'Popularne Silniki AI do Generowania Obrazów',
+                card5_desc: 'Każdy silnik ma swoje mocne strony. Warto eksperymentować, aby znaleźć ten, który najlepiej pasuje do Twojego stylu.',
+                card5_mj_desc: 'Znany z generowania bardzo artystycznych, dopracowanych i często "opiniotwórczych" obrazów. Doskonały do tworzenia unikalnych, estetycznych kompozycji.',
+                card5_sd_desc: 'Model open-source, który daje ogromną elastyczność i kontrolę. Wymaga więcej wiedzy technicznej, ale pozwala na trenowanie własnych modeli i zaawansowane modyfikacje.',
+                card5_dalle_desc: 'Zintegrowany z ChatGPT, świetnie radzi sobie ze zrozumieniem skomplikowanych i opisowych promptów w naturalnym języku. Idealny do szybkiego prototypowania pomysłów.',
+                card5_ff_desc: 'Trenowany na bibliotece Adobe Stock, co czyni go bezpiecznym do użytku komercyjnego. Znakomicie integruje się z ekosystemem Adobe (np. Photoshop).',
+                footer_text: 'Stworzone z pasją do generatywnej AI. Eksperymentuj i twórz!'
+            }
+        };
+
+        function setLanguage(lang) {
+            document.documentElement.lang = lang;
+            document.querySelectorAll('[data-lang-key]').forEach(elem => {
+                const key = elem.getAttribute('data-lang-key');
+                if (translations[lang] && translations[lang][key]) {
+                    elem.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Update active button state
+            document.getElementById('lang-en').classList.toggle('active', lang === 'en');
+            document.getElementById('lang-pl').classList.toggle('active', lang === 'pl');
+        }
+
+        function copyPrompt(button) {
+            const promptBlock = button.parentElement;
+            const promptText = promptBlock.querySelector('p').innerText;
+            const textArea = document.createElement('textarea');
+            textArea.value = promptText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            
+            try {
+                document.execCommand('copy');
+                const originalIcon = button.innerHTML;
+                button.innerHTML = `<span class="material-symbols-outlined text-lg">check</span>`;
+                button.classList.add('copied');
+                
+                setTimeout(() => {
+                    button.innerHTML = originalIcon;
+                    button.classList.remove('copied');
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy text: ', err);
+            } finally {
+                document.body.removeChild(textArea);
+            }
+        }
+
+        // Set default language on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            setLanguage('en');
+        });
+    </script>
+</body>
+</html>
